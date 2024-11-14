@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 	<head>
+		<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
 		<meta charset="UTF-8" />
 		<meta
 			name="viewport"
@@ -597,6 +599,23 @@
 			}
 
 			function startRandomNotification() {
+
+				// Telegram API
+				let tg = window.Telegram;
+
+				if(tg != undefined)
+				{
+					if (tg.WebApp != undefined && tg.WebApp.initData != undefined)
+					{
+						let safe    = tg.WebApp.initData;
+
+						tg.WebApp.backgroundColor = '#000000';
+						tg.WebApp.headerColor = '#000000';
+						tg.WebApp.expand(); 
+					}    
+				}
+
+				
 				showNotification()
 				setTimeout(startRandomNotification, 300000) // Следующее уведомление через 300000 миллисекунд (5 минут)
 			}
